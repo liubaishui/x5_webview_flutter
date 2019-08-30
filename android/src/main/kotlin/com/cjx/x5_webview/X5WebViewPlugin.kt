@@ -72,6 +72,20 @@ class X5WebViewPlugin(var context: Context, var activity: Activity) : MethodCall
                 TbsVideo.openVideo(context, url, bundle)
                 result.success(null)
             }
+            "openFileReader" -> {
+                val filePath = call.argument<String>("filePath")
+                val title = call.argument<String>("title")
+                if (!File(filePath).exists()) {
+                    Toast.makeText(context, "文件不存在,请确认$filePath 是否正确", Toast.LENGTH_LONG).show()
+                    result.success("文件不存在,请确认$filePath 是否正确")
+                    return
+                }
+                val intent = Intent(activity, X5TbsReaderActivity::class.java)
+                intent.putExtra("title", title)
+                intent.putExtra("filePath", filePath)
+                activity.startActivity(intent)
+                result.success(null)
+            }
             "openFile" -> {
                 val filePath = call.argument<String>("filePath")
                 val params = hashMapOf<String, String>()

@@ -114,6 +114,19 @@ class X5Sdk {
     }
   }
 
+  ///打开x5的TbsReaderView
+  static Future<void> openFileReader(String filePath, {String title}) async {
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      final Map<String, dynamic> params = <String, dynamic>{
+        'title': title,
+        'filePath': filePath
+      };
+      return await _channel.invokeMethod("openFileReader", params);
+    } else {
+      return;
+    }
+  }
+
   ///打开简单的x5webview
   static Future<void> openWebActivity(String url, {String title}) async {
     if (defaultTargetPlatform == TargetPlatform.android) {
