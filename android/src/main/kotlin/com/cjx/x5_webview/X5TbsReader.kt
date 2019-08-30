@@ -19,7 +19,7 @@ class X5TbsReader(private val context: Context, val id: Int, val params: Map<Str
     init {
         channel.setMethodCallHandler(this)
         mTbsReaderView = TbsReaderView(context,
-                TbsReaderView.ReaderCallback{ p0, p1, p2 -> Log.DEBUG("文件浏览服务日志输出:$p0 $p1 $p2")})
+                TbsReaderView.ReaderCallback{ p0, p1, p2 -> Log.d("X5TbsReader","文件浏览服务日志输出:$p0 $p1 $p2")})
 
         val filePath = params["filePath"].toString()
         val bundle = Bundle()
