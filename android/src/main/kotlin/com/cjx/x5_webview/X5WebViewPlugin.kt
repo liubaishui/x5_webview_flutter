@@ -25,6 +25,7 @@ class X5WebViewPlugin(var context: Context, var activity: Activity) : MethodCall
             setCallBack(channel)
 
             registrar.platformViewRegistry().registerViewFactory("com.cjx/x5WebView", X5WebViewFactory(registrar.messenger(), registrar.activeContext()))
+            registrar.platformViewRegistry().registerViewFactory("com.cjx/x5TbsReader", X5TbsReaderFactory(registrar.messenger(), registrar.activeContext()))
 
         }
 
