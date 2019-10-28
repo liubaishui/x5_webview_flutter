@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
 A new Flutter plugin.
                        DESC
   s.homepage         = 'http://example.com'
+  s.swift_version    = '4.0'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
