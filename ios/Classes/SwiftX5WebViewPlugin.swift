@@ -1,7 +1,7 @@
 import Flutter
 import UIKit
 
-public class SwiftX5WebviewPlugin: NSObject, FlutterPlugin {
+public class SwiftX5WebViewPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "x5_webview", binaryMessenger: registrar.messenger())
     let instance = SwiftX5WebviewPlugin()
