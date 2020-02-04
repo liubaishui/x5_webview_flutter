@@ -22,14 +22,14 @@ class X5WebViewPlugin(var context: Context, var activity: Activity) : MethodCall
         fun registerWith(registrar: Registrar) {
             val channel = MethodChannel(registrar.messenger(), "com.cjx/x5Video")
             channel.setMethodCallHandler(X5WebViewPlugin(registrar.context(), registrar.activity()))
-            setCallBack(channel)
+            setCallBack(channel, registrar.activity() )
 
             registrar.platformViewRegistry().registerViewFactory("com.cjx/x5WebView", X5WebViewFactory(registrar.messenger(), registrar.activeContext()))
             registrar.platformViewRegistry().registerViewFactory("com.cjx/x5TbsReader", X5TbsReaderFactory(registrar.messenger(), registrar.activeContext()))
 
         }
 
-        private fun setCallBack(channel: MethodChannel) {
+        private fun setCallBack(channel: MethodChannel, activity: Activity) {
             QbSdk.setTbsListener(object : TbsListener {
                 override fun onInstallFinish(p0: Int) {
                     activity.runOnUiThread {
