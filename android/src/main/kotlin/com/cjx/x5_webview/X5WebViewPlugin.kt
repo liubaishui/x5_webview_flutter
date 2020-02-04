@@ -32,15 +32,21 @@ class X5WebViewPlugin(var context: Context, var activity: Activity) : MethodCall
         private fun setCallBack(channel: MethodChannel) {
             QbSdk.setTbsListener(object : TbsListener {
                 override fun onInstallFinish(p0: Int) {
-                    channel.invokeMethod("onInstallFinish", null)
+                    activity.runOnUiThread {
+                        channel.invokeMethod("onInstallFinish", null)
+                    }
                 }
 
                 override fun onDownloadFinish(p0: Int) {
-                    channel.invokeMethod("onDownloadFinish", null)
+                    activity.runOnUiThread {
+                        channel.invokeMethod("onDownloadFinish", null)
+                    }
                 }
 
                 override fun onDownloadProgress(p0: Int) {
-                    channel.invokeMethod("onDownloadProgress", p0)
+                    activity.runOnUiThread {
+                        channel.invokeMethod("onDownloadProgress", p0)
+                    }
                 }
             })
         }
